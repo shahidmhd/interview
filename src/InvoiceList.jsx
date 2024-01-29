@@ -7,7 +7,8 @@ import { deleteInvoice } from './Store';
 export function InvoiceList() {
   // Use the selector hook to access the invoices state
   const invoices = useSelector((state) => state.invoice);
-
+  // const totalAmount = useSelector((state) => state.invoices.totalamount);
+console.log(invoices,"rrrao");
   // Use the dispatch hook to dispatch actions
   const dispatch = useDispatch();
 
@@ -24,7 +25,9 @@ export function InvoiceList() {
         <thead>
           <tr className="bg-gray-100">
             <th className="border p-2">Customer</th>
+            <th className="border p-2">quantity</th>
             <th className="border p-2">Amount</th>
+            <th className="border p-2">total</th>
             <th className="border p-2">Actions</th>
           </tr>
         </thead>
@@ -32,8 +35,9 @@ export function InvoiceList() {
           {invoices.map((invoice) => (
             <tr key={invoice.id}>
               <td className="border p-2">{invoice.customer}</td>
+              <td className="border p-2">{invoice.quantity}</td>
               <td className="border p-2">{invoice.amount}</td>
-              
+              <td className="border p-2">{invoice.totalAmount}</td>
               <td className="border p-2">
                 <button
                   onClick={() => handleDelete(invoice.id)}

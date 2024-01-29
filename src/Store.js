@@ -11,11 +11,18 @@ const invoicesSlice = createSlice({
   reducers: {
     // Add a new invoice to the state
     addInvoice(state, action) {
-      state.invoice.push(action.payload);
+      return {
+        ...state,
+        invoice: [...state.invoice, ...action.payload.tablerows],
+      };
     },
+    
     // Delete an invoice from the state by id
     deleteInvoice(state, action) {
-      return state.filter((invoice) => invoice.id !== action.payload);
+      return {
+        ...state,
+        invoice: state.invoice.filter((invoice) => invoice.id !== action.payload),
+      };
     },
   },
 });

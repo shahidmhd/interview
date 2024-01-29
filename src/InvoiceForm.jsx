@@ -64,7 +64,14 @@ export function InvoiceForm() {
       return;
     }
 
-    dispatch(addInvoice(invoices));
+    const data={
+      tablerows:invoices,
+      subtotal:calculateTotalAmount()
+    }
+
+    console.log(data,"ertetret");
+    
+    dispatch(addInvoice(data));
 
     // Reset the form by initializing with a single empty row
     setInvoices([{ id: nanoid(), customer: '', amount: '', quantity: '', totalAmount: 0 }]);
